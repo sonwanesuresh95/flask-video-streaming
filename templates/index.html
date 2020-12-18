@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stream your favourite movies</title>
+    <script type="text/javascript" src="/static/jquery-1.7.1.min.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script>
+    img {
+    float: left;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+}
+</script>
+</head>
+<body>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<center>
+    {% for song in songs %}
+        <a href="javascript:void(0);" onclick="playsong('{{song}}')">{{song[:-4]}}</a>
+    <br>
+    {% endfor %}
+
+<script type="text/javascript">
+    function playsong(song){
+        $('audio').attr('src', '/static/music/'+song);
+    }
+</script>
+
+<h1 align="center">Movieflix</h1>
+    <br>
+    <table border="0" align="center">
+        <tr align="center">
+            {% for name,poster,link in zip(movie_mapping.keys(),posters,movie_mapping.values()) %}
+
+            <td align="center">
+                <img src="/static/posters/{{poster}}" width="200" height="300" >
+                <div class="card-body">
+    <h5 class="card-title">{{name}}</h5>
+                    <a href="/stream/{{link}}" class="btn btn-primary">Watch Now</a>
+                </div>
+            </td>
+            {% endfor %}
+            <!--td>
+                <img src="/static/posters/despicable me.jpg" width="200" height="300" >
+                <div class="card-body">
+    <h5 class="card-title">Despicable Me</h5>
+                    <a href="#" class="btn btn-primary">Watch Now</a>
+                </div>
+            </td>
+            <td>
+                <img src="/static/posters/inception.jpg" width="200" height="300" >
+                 <div class="card-body">
+    <h5 class="card-title">Inception</h5>
+                     <a href="#" class="btn btn-primary">Watch Now</a>
+                </div>
+            </td>
+            <td>
+                <img src="/static/posters/godfather.jpg" width="200" height="300" >
+                <div class="card-body">
+    <h5 class="card-title">The Godfather</h5>
+                    <a href="#" class="btn btn-primary">Watch Now</a>
+                </div>
+            </td>
+            <td>
+                <img src="/static/posters/martian.jpg" width="200" height="300" >
+                <div class="card-body">
+    <h5 class="card-title">The Martian</h5>
+                    <a href="#" class="btn btn-primary">Watch Now</a>
+                </div>
+            </td-->
+
+        </tr>
+
+    </table>
+</center>
+</body>
+</html>
